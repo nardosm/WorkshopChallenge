@@ -5,6 +5,7 @@
   "dependencies": {
     "lodash": "^4.17.4",
     "react": "^15.6.1",
+    "react-bootstrap-table": "^3.5.0",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.10",
     "semantic-ui-react": "^0.71.3"

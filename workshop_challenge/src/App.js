@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import './App.css';
 import {Dimmer, Loader, Table } from 'semantic-ui-react'
-
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
 class App extends Component {
   
@@ -28,7 +28,7 @@ class App extends Component {
               loading:false
             });
             console.log(data);
-        })
+      })
   }
 
 
@@ -55,7 +55,6 @@ class App extends Component {
     const { column, data, direction } = this.state
 
     return (
-
 
       <div className= "page-padding">
 
