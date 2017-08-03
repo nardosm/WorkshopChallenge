@@ -23,6 +23,15 @@
   to { transform: rotate(360deg); }
 }
 
-.page-padding{
-  padding: 40px 70px 40px 70px;
+
+
+.page_padding{
+  margin-top: 0;
+  box-sizing: border-box;
+ 
+}
+
+
+.sideBarBackground{
+ height:600px;
 }

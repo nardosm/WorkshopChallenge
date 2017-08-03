@@ -1,197 +1,178 @@
+/*
+
 import React, { Component } from 'react'
-import { Table, Menu, Icon, Segment, Input } from 'semantic-ui-react'
+import {Checkbox, Loader, Dimmer, Button, Sidebar, Menu } from 'semantic-ui-react'
 import _ from 'lodash';
-
-const tableData = [
-  { name: 'John', age: '15', gender: 'Male' },
-  { name: 'Amber', age: '40', gender: 'Female' },
-  { name: 'Leslie', age: '25', gender: 'Female' },
-  { name: 'Ben', age: '70', gender: 'Male' },
-   { name: 'Pob', age: '58', gender: 'Male' },
-]
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import './App.css'; 
+import Purchase from './Purchase.js'
+import Refinance from './Refinance.js'
+import Definitions from './Definitions.js'
+import TabOptions from './TabOptions.js'
 
 
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.data=tableData
-    this.renderRow = props.renderBodyRow || this.defaultRenderBodyRow
-    this.headerRow = props.headers || Object.keys(this.data.pop());
-    this.currentIndex = 0
-    this.paginationLimit = props.pageLimit || 8;
-    this.pagedData = this.pagination(this.data, this.paginationLimit)
-
-    this.state = {
-      data:this.pagedData[0],
-      searchTerm: '',
-      column: null,
-      direction: null,
-
-    }
-   
-  }
-
-
-  componentDidMount () {
-
-    console.log(tableData.length)
-    /*
-      const url = "https://randomuser.me/api/?results=20";
-
-      fetch(url)
-        .then((resp) => resp.json())
-        .then((data) => {
-            data = data.results;
-            this.setState({
-              data:data,
-              loading:false
-            });
-            console.log(data);
-      })
-      */
-}
-
-
-  handleSort = clickedColumn => () => {
-    const { column, data, direction } = this.state
-
-    if (column !== clickedColumn) {
-      this.setState({
-        column: clickedColumn,
-        data: _.sortBy(data, [clickedColumn]),
-        direction: 'ascending',
-      })
-
-      return
-    }
-
-    this.setState({
-      data: data.reverse(),
-      direction: direction === 'ascending' ? 'descending' : 'ascending',
-    })
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-  defaultRenderBodyRow = (data, index) =>
-    (<Table.Row key={index}>
-      {this.headerRow.map((header, idx) => (<Table.Cell key={idx}>{data[header] || ''}</Table.Cell>))}
-    </Table.Row>)
-
-  pagination = (data, perPage) => {
-    let sets = [], chunks = data.length / perPage;
-
-    for (var i = 0, j = 0; i < chunks; i++, j += perPage) sets[i] = data.slice(j, j + perPage)
-
-    return sets;
-  }
-
-  //TODO:: reset sort/search not global reset
-  reset = (type) => {
-    this.pagedData = this.pagination(this.data, this.paginationLimit)
-    this.currentIndex = 0
-    this.setState({
-      data: this.pagedData[0],
-      searchTerm: '',
-      sort: null,
-      sortDirection: null
-    })
-  }
-
-  pageChange = index => {
-    if(index === this.currentIndex) return null;
-    this.currentIndex = index
-    this.setState({ data: this.pagedData[index] })
-  }
-
-  
-
-  search = term => {
-    if(term !==''){
-      var regex = new RegExp(term, 'i');
-      const filteredData = this.data.filter(row => Object.values(row).some(prop => regex.test(prop)));
-
-      this.pagedData = this.pagination(filteredData, this.paginationLimit)
-      this.currentIndex = 0
-
-      this.setState({
-        data: this.pagedData[0],
-        searchTerm: term
-      })
-    } else {
-      this.reset('search')
-    }
-  }
-
-  tableHeaderClass = (header) => this.state.sort === header ? `sorted ${this.state.sortDirection}` : ''
+export default class App extends Component {
 
   render(){
-    const { column, data, direction } = this.state
-    return (
-      <div>
-        <Segment attached='top' floated="right">
-          <Input icon='search' value={this.state.searchTerm} onChange={(event, term) => this.search(term.value)} placeholder='Search...' />
-        </Segment>
-        <Table sortable celled style={{overflowX:'scroll'}}>
 
+    return(
 
-          <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell sorted={column === 'email' ? direction : null} onClick={this.handleSort('email')}>
-              Name
-            </Table.HeaderCell>
-            <Table.HeaderCell sorted={column === 'phone' ? direction : null} onClick={this.handleSort('phone')}>
-              Age
-            </Table.HeaderCell>
-            <Table.HeaderCell sorted={column === 'cell' ? direction : null} onClick={this.handleSort('cell')}>
-              Gender
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+      <Purchase/>
 
+    )
 
-          <Table.Body>
-            {this.state.data &&
-              this.state.data.map((item, idx) => this.renderRow(item, idx))
-            }
-          </Table.Body>
-          {this.pagedData &&
-            this.pagedData.length > 1 &&
-            <Table.Footer>
-              <Table.Row>
-                <Table.HeaderCell colSpan={this.headerRow.length}>
-                  <Menu floated='right' pagination>
-                    {this.currentIndex !== 0 && this.pagedData.length > 1 &&
-                      <Menu.Item onClick={() => this.pageChange(this.currentIndex-1)} as='a' icon><Icon name='left chevron' /></Menu.Item>
-                    }
-                    {this.pagedData.map((dataSet, index) => (
-                      <Menu.Item key={index} active={index === this.currentIndex} onClick={() => this.pageChange(index)} as='a'>{index+1}</Menu.Item>
-                    ))}
-                    {this.currentIndex+1 < this.pagedData.length &&
-                      <Menu.Item onClick={() => this.pageChange(this.currentIndex+1)} as='a' icon><Icon name='right chevron' /></Menu.Item>
-                    }
-
-                  </Menu>
-                </Table.HeaderCell>
-              </Table.Row>
-            </Table.Footer>
-          }
-        </Table>
-      </div>)
   }
 
 }
 
 
-export default App
+*/
+
+
+import React, { Component } from 'react'
+import {
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  Image,
+  List,
+  Menu,
+  Segment,
+  Visibility,
+} from 'semantic-ui-react'
+import './App.css'; 
+import Purchase from './Purchase.js'
+import Refinance from './Refinance.js'
+import Definitions from './Definitions.js'
+import TabOptions from './TabOptions.js'
+
+
+const FixedMenu = () => (
+  <Menu fixed='top' size='large'>
+    <Container>
+      <Menu.Item as='a' active>Home</Menu.Item>
+      <Menu.Item as='a'>Press</Menu.Item>
+      <Menu.Item as='a'>Program Offices</Menu.Item>
+      <Menu.Item as='a'>Ben Carson</Menu.Item>
+      <Menu.Menu position='right'>
+        <Menu.Item className='item'>
+          <Button as='a'>Log in</Button>
+        </Menu.Item>
+        <Menu.Item>
+          <Button as='a' primary>Contact Us</Button>
+        </Menu.Item>
+      </Menu.Menu>
+    </Container>
+  </Menu>
+)
+
+export default class HomepageLayout extends Component {
+  state = {}
+
+  hideFixedMenu = () => this.setState({ visible: false })
+  showFixedMenu = () => this.setState({ visible: false })
+
+  render() {
+    const { visible } = this.state
+
+    return (
+      <div>
+        { visible ? <FixedMenu /> : null }
+
+        <Visibility
+          onBottomPassed={this.showFixedMenu}
+          onBottomVisible={this.hideFixedMenu}
+          once={false}
+        >
+          <Segment
+            textAlign='center'
+            style={{ backgroundColor:'#FF4C4C',minHeight: 700, padding: '1em 0em' }}
+            vertical
+          >
+            <Container>
+              <Menu inverted  secondary size='large'>
+                <Menu.Item as='a' active>Home</Menu.Item>
+                <Menu.Item as='a'>Press</Menu.Item>
+                <Menu.Item as='a'>Program Offices</Menu.Item>
+                <Menu.Item as='a'>Ben Carson</Menu.Item>
+                <Menu.Item position='right'>
+                  <Button as='a' inverted>Log in</Button>
+                  <Button as='a' inverted style={{ marginLeft: '0.5em' }}>Contact Us</Button>
+                </Menu.Item>
+              </Menu>
+            </Container>
+
+            <Container text>
+              <Header
+                as='h1'
+                content='HUD Just Got Sexier!'
+                inverted
+                style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
+              />
+              <Header
+                as='h2'
+                content='Browse Single Family Portfolio Snapshot'
+                inverted
+                style={{ fontSize: '1.7em', fontWeight: 'normal' }}
+              />
+              <Button basic inverted size='huge'>
+                Get Started
+                <Icon name='right arrow' />
+              </Button>
+            </Container>
+          </Segment>
+        </Visibility>
+
+        <Segment style={{ padding: '2em 0em' }} vertical>
+          <Grid container stackable verticalAlign='middle'>
+            <Grid.Row>
+              <Grid.Column width={16}>
+                <TabOptions/>
+              </Grid.Column>
+              
+            </Grid.Row>
+            
+          </Grid>
+        </Segment>
+
+
+
+        
+
+        <Segment inverted vertical style={{ padding: '5em 0em' }}>
+          <Container>
+            <Grid divided inverted stackable>
+              <Grid.Row>
+                <Grid.Column width={3}>
+                  <Header inverted as='h4' content='About' />
+                  <List link inverted>
+                    <List.Item as='a'>Sitemap</List.Item>
+                    <List.Item as='a'>Contact Us</List.Item>
+                    <List.Item as='a'>Religious Ceremonies</List.Item>
+                    <List.Item as='a'>Gazebo Plans</List.Item>
+                  </List>
+                </Grid.Column>
+                <Grid.Column width={3}>
+                  <Header inverted as='h4' content='Services' />
+                  <List link inverted>
+                    <List.Item as='a'>Banana Pre-Order</List.Item>
+                    <List.Item as='a'>DNA FAQ</List.Item>
+                    <List.Item as='a'>How To Access</List.Item>
+                    <List.Item as='a'>Favorite X-Men</List.Item>
+                  </List>
+                </Grid.Column>
+                <Grid.Column width={7}>
+                  <Header as='h4' inverted>Footer Header</Header>
+                  <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Container>
+        </Segment>
+      </div>
+    )
+  }
+}

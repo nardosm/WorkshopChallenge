@@ -1,0 +1,269 @@
+import React, { Component } from 'react'
+import {Checkbox, Loader, Dimmer, Button, Sidebar, Menu, Container } from 'semantic-ui-react'
+import _ from 'lodash';
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import './App.css'; 
+
+
+
+export default class Refinance extends Component {
+
+
+
+  constructor(props){
+    super(props)
+    this.state={
+      data:[],
+      loading:true,
+      visible:false,
+
+
+      property_state: false,
+      property_city: false,
+      property_county: false,
+      property_zip: false,
+      origination: false,
+      originating_mortgagee_number: false,
+      sponsor_name: false,
+      sponsor_number: false,
+      down_payment_source: false,
+      non_profit_number: false,
+      product_type: false,
+      loan_purpose: false,
+      property_type: false,
+      interest_rate: false,
+      original_mortgage_amount: false,
+      endorsement_year: false,
+      mortgagee_sponsor_originator: false,
+    }
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  componentDidMount () {
+
+    const url = "https://129.158.65.161/ords/hud1/hud/HUDStats/GetRefinanceData";
+    fetch(url)
+      .then((resp) => resp.json())
+      .then((data) => {
+          data = data.items;
+          this.setState({
+            data:data,
+            loading:false
+
+          });
+          //console.log(data);
+    })     
+       
+  }
+
+
+
+  handleInputChange(event, data) {
+
+    const { name } = data
+    console.log(name)
+
+    
+
+
+      switch(name){
+
+        case 'property_state':
+          this.setState({
+             property_state: !this.state.property_state,
+          })
+          break;
+        
+        case 'property_city':
+          this.setState({
+              property_city: !this.state.property_city,
+          })
+          break;
+        
+        case 'property_county':
+          this.setState({
+             property_county: !this.state.property_county,
+          })
+          break;
+        
+        case 'property_zip':
+          this.setState({         
+              property_zip: !this.state.property_zip,
+          })
+          break;
+        
+        case 'origination':
+          this.setState({
+             origination: !this.state.origination,
+          })
+          break;
+        
+        case 'originating_mortgagee_number':
+          this.setState({
+              originating_mortgagee_number: !this.state.originating_mortgagee_number,
+          })
+          break;
+        
+        case 'sponsor_name':
+          this.setState({
+             sponsor_name: !this.state.sponsor_name,
+          })
+          break;
+        
+        case 'sponsor_number':
+          this.setState({
+             sponsor_number: !this.state.sponsor_number,
+          })
+          break;
+        
+        case 'down_payment_source':
+          this.setState({
+             down_payment_source: !this.state.down_payment_source,
+          })
+          break;
+        
+
+        case 'non_profit_number':
+          this.setState({
+              non_profit_number: !this.state.non_profit_number,
+          })
+          break;
+
+        case 'product_type':
+          this.setState({
+             product_type: !this.state.product_type,
+          })
+          break;
+
+
+        case 'loan_purpose':
+          this.setState({
+              loan_purpose: !this.state.loan_purpose,
+          })
+          break;
+
+        case 'property_type':
+          this.setState({
+              property_type: !this.state.property_type,
+          })
+          break;
+
+
+        case 'interest_rate':
+          this.setState({
+               interest_rate: !this.state.interest_rate ,
+          })
+          break;
+
+        case 'original_mortgage_amount':
+          this.setState({
+              original_mortgage_amount: !this.state.original_mortgage_amount,
+          })
+          break;
+
+
+        case 'endorsement_year':
+          this.setState({
+              endorsement_year: !this.state.endorsement_year,
+          })
+          break;
+
+
+        case 'mortgagee_sponsor_originator':
+          this.setState({
+               mortgagee_sponsor_originator: !this.state.mortgagee_sponsor_originator,
+          })
+          break;
+        
+        }
+ 
+  }
+
+
+
+
+
+   toggleVisibility = () => this.setState({ visible: !this.state.visible })
+
+
+
+
+  render() {
+
+  const { visible } = this.state
+
+    return (
+
+      <div className="page_padding">
+       <Dimmer inverted active={this.state.loading}>
+          <Loader>Loading</Loader>
+        </Dimmer>
+     
+
+      <Button content='FILTER' icon='filter' labelPosition='left' onClick={this.toggleVisibility}/>
+
+
+      <Sidebar.Pushable >
+          <Sidebar as={Container} animation='push' direction="left" width='thin' visible={visible} icon='labeled'  vertical page>
+            
+            <Checkbox  name="property_state" onChange={this.handleInputChange}  label='Property State ' />
+            <Checkbox  name="property_city" onChange={this.handleInputChange} label='Property City ' />
+            <Checkbox  name="property_county" onChange={this.handleInputChange}  label='Property County' />
+            <Checkbox  name="property_zip" onChange={this.handleInputChange} label='Property Zip' />
+            <Checkbox  name="origination" onChange={this.handleInputChange}  label='Originating Mortgage Sponsor' />
+            <Checkbox  name="originating_mortgagee_number" onChange={this.handleInputChange} label='Originating Mortgage Number' />
+            <Checkbox  name="sponsor_name" onChange={this.handleInputChange}  label='Sponsor Name' />
+            <Checkbox  name="sponsor_number" onChange={this.handleInputChange} label='Sponsor Number' />
+            <Checkbox  name="down_payment_source" onChange={this.handleInputChange}  label='Down Payment Source' />
+            <Checkbox  name="non_profit_number" onChange={this.handleInputChange} label='Non-Profit Number' />
+            <Checkbox  name="product_type" onChange={this.handleInputChange}  label='Product Type ' />
+            <Checkbox  name="loan_purpose" onChange={this.handleInputChange} label='Loan Purpose' />
+            <Checkbox  name="property_type" onChange={this.handleInputChange}  label='Property Type ' />
+            <Checkbox  name="interest_rate" onChange={this.handleInputChange}  label='Interest Rate' />
+            <Checkbox  name="original_mortgage_amount" onChange={this.handleInputChange} label='Original Mortgage Amount' />
+            <Checkbox  name="endorsement_year" onChange={this.handleInputChange}  label='Endorsement Year' />
+            <Checkbox  name="mortgagee_sponsor_originator" onChange={this.handleInputChange} label='Endorsement Month' />
+
+          </Sidebar>
+
+
+
+        <Sidebar.Pusher className="sideBarBackground">
+           
+
+        <BootstrapTable className="page-padding"  data={this.state.data} striped hover pagination search>
+
+          <TableHeaderColumn hidden={this.state.property_state} name= 'property_state' isKey dataField='property_state' dataSort={true}>Property State</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.property_city} dataField='property_city' dataSort={true}>Property City</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.property_county}  dataField='property_county' dataSort={true}>Property County</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.property_zip}  dataField='property_zip' dataSort={true}>Property Zip</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.origination}  dataField='origination' dataSort={true}>Originating Mortgage Sponsor</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.originating_mortgagee_number}  dataField='originating_mortgagee_number' dataSort={true}>Originating Mortgagee Number</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.sponsor_name}  dataField='sponsor_name' dataSort={true}>Sponsor Name</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.sponsor_number}  dataField='sponsor_number' dataSort={true}>Sponsor Number</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.down_payment_source}  dataField='down_payment_source' dataSort={true}>Down payment Source</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.non_profit_number}  dataField='non_profit_number' dataSort={true}>Non Profit Number</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.product_type}  dataField='product_type' dataSort={true}>Product Type</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.loan_purpose}  dataField='loan_purpose' dataSort={true}>Loan Purpose</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.property_type}  dataField='property_type' dataSort={true}>Property Type</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.interest_rate}  dataField='interest_rate' dataSort={true}>Interest Rate</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.original_mortgage_amount}  dataField='original_mortgage_amount' dataSort={true}>Original Morgage Amount</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.endorsement_year}  dataField='endorsement_year' dataSort={true}>Endorsement Year</TableHeaderColumn>
+          <TableHeaderColumn hidden={this.state.mortgagee_sponsor_originator}  dataField='mortgagee_sponsor_originator' dataSort={true} dataSort={true}>Endorsement Month</TableHeaderColumn>
+      
+        </BootstrapTable>
+
+
+        
+          </Sidebar.Pusher>
+
+           </Sidebar.Pushable>
+
+
+      </div>
+    );
+  }
+}
+
+
