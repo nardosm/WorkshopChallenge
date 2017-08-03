@@ -1,0 +1,22 @@
+Tab Switching Implementation
+
+This document outlines how the tab switching for the different tables was implemented
+
+The UI for the tabs was implemented using Semantic UI React as a Menu. Each Menu has a click hander that fires when the user clicks on each Menu option. In turn, below each menu we have the contents that we want to display when the menu option is selected. In react we can track this using states. We have defined the initial states as follows in the constructor.
+
+ this.state={
+      tab1_hidden: false,
+      tab2_hidden: true,
+      tab3_hidden: true
+ }
+ 
+ 
+ Once we have defined the initial states, we can create a click handler for each menu selected. In the click hander we can set the states for each option to toggle. For instance if we want to enable the "Purchase Data" tab and disable the other ones we can do it as follows:
+ 
+ this.setState({
+      tab1_hidden: false,
+      tab2_hidden: true,
+      tab3_hidden: true
+ })
+ 
+To control which content is hidden and which content is shown, we can add a hidden property for our content. In this case we had wrapped all the table inside a div. Therefore, we are controlling the hidden property of the div which will hide and show the table. This can be done by adding "hidden={this.state.tab2_hidden}" to the div. This helps us track the state that's being changed above inside the click hander for the menu.
