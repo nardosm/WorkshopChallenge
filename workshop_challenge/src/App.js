@@ -113,10 +113,10 @@ export default class HomepageLayout extends Component {
                 style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
               />
               <Header
-                as='h2'
-                content='Browse Single Family Portfolio Snapshot'
+                as='h3'
+                content='Browse Single Family Portfolio Snapshot Like a Boss'
                 inverted
-                style={{ fontSize: '1.7em', fontWeight: 'normal' }}
+                style={{ fontSize: '1.5em', fontWeight: 'normal' }}
               />
               <Button basic inverted size='huge'>
                 Get Started
