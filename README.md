@@ -8,6 +8,7 @@ These are the different roles that were assigned for the project.
 Project Manager - Walid Nasim  
 DBA & REST Developer - Joaquin Lacalle-Melero 
 UI Developers:
+
   Akintola Marke  
   Nardos Megersa  
   Shehzad Sadiq  
