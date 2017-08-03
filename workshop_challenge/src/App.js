@@ -1,33 +1,3 @@
-/*
-
-import React, { Component } from 'react'
-import {Checkbox, Loader, Dimmer, Button, Sidebar, Menu } from 'semantic-ui-react'
-import _ from 'lodash';
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import './App.css'; 
-import Purchase from './Purchase.js'
-import Refinance from './Refinance.js'
-import Definitions from './Definitions.js'
-import TabOptions from './TabOptions.js'
-
-
-export default class App extends Component {
-
-  render(){
-
-    return(
-
-      <Purchase/>
-
-    )
-
-  }
-
-}
-
-
-*/
-
 
 import React, { Component } from 'react'
 import {

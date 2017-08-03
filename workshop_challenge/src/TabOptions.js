@@ -104,7 +104,7 @@ export default class TabOptions extends Component {
           <div hidden={this.state.tab3_hidden} style={{marginTop:'70px'}}>
             <Header as='h1' textAlign='center'>Definitions</Header>
               <Header as='h3' style={{marginBottom:'70px', fontWeight:'normal', lineHeight:1.5}} textAlign='center'>
-                The definitions page provides details on the single family monthly table. We ran out of words so this is just a filler so that we can have two multiple lines and look cool.
+                The definitions page provides details on the single family monthly table. We ran out of words so this is just a filler so that we can have multiple lines and look cool.
                 Yay, we have two lines now. Let's see, what else can we can talk about? Did you know that the person who would proofread Hitler's speeches is technically a grammar Nazi.
               </Header>
             <Definitions />
