@@ -6,12 +6,13 @@ This is a project for Oracle Cloud Native Workshop challenge showing how micro-s
 These are the different roles that were assigned for the project.
 
 Project Manager - Walid Nasim  
-DBA & REST Developer - Joaquin Lacalle-Melero 
+DBA & REST Developer - Joaquin Lacalle-Melero
+
 UI Developers:
 
-  Akintola Marke  
-  Nardos Megersa  
-  Shehzad Sadiq  
+  -Akintola Marke  
+  -Nardos Megersa  
+  -Shehzad Sadiq  
 
 
 # Technologies Used
